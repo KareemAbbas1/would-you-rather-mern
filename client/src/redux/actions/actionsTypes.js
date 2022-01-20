@@ -6,3 +6,4 @@ export const ADD_QUESTION_TO_USER = 'ADD_QUESTION_TO_USER';
 export const ADD_ANSWER = 'ADD_ANSWER';
 export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER';
 export const GET_USERS = 'GET_USERS';
+export const LOADING_STATE = 'LOADING_STATE'

@@ -1,6 +1,11 @@
 import * as types from '../actions/actionsTypes';
 
 
+// const initialState = {
+//     state: {},
+//     loading: false
+// }
+
 const questions = (state = {}, action) => {
     switch (action.type) {
 
@@ -31,6 +36,13 @@ const questions = (state = {}, action) => {
                 }
 
             };
+
+        // case types.LOADING_STATE:
+
+        //     return {
+        //         ...state,
+        //         loading: true
+        //     }
 
         default:
             return state;

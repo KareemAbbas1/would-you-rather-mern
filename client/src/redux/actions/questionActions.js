@@ -9,7 +9,7 @@ export const getQuestions = (questions) => {
     };;
 };
 
-function addQuestion(question) {
+export function addQuestion(question) {
     return {
         type: types.ADD_QUESTION,
         question
@@ -26,6 +26,12 @@ export function addAnswer({ qid, authedUser, answer }) {
         }
     }
 };
+
+// export const questionsLoading = () => {
+//     return{
+//         type: types.LOADING_STATE
+//     }
+// }
 
 
 export function handleAddQuestion(optionOne, optionTwo) {
