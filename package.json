@@ -1,0 +1,26 @@
+{
+  "name": "would-you-rather-mern",
+  "version": "1.0.0",
+  "description": "Polls app build with the MERN stack",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Kareem Abbas",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
