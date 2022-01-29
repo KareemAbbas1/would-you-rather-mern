@@ -33,6 +33,7 @@ class Home extends Component {
   }
 };
 
+
 function mapStateToProps({ authedUser, questions, users }) {
 
   const answeredPolls = authedUser && Object.keys(questions)

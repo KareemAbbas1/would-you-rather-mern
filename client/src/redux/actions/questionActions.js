@@ -1,13 +1,18 @@
 import * as types from './actionsTypes';
 import { saveQuestion } from '../../utils/api';
 import { addQuestionToUser } from './usersAction';
+import axios from 'axios';
 
-export const getQuestions = (questions) => {
-    return {
+export const getQuestions = questions => dispatch => {
+    axios
+    .get('/api/questions')
+    .then(res => dispatch ({
         type: types.GET_QUESTIONS,
-        questions
-    };;
+        questions: res.data
+    }));
 };
+
+
 
 export function addQuestion(question) {
     return {

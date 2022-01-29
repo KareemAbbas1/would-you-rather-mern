@@ -10,7 +10,7 @@ const OptionSchema = new Schema({
         type: String,
         required: true
     }
-});
+});  
 
 
 // Question Schema(Final Schema)
@@ -31,5 +31,4 @@ const QuestionSchema = new Schema({
 });
 
 const Question = mongoose.model('question', QuestionSchema);
-
 export default Question;

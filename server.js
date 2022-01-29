@@ -5,9 +5,10 @@ import { mongoURI } from "./config/keys.js";
 
 // Import routes
 import questions from './routes/api/questions.js';
+import users from './routes/api/users.js';
 
 
-// Initiate the server
+// Initialize the server
 const app = express();
 
 
@@ -29,6 +30,7 @@ mongoose
 
 // Use routes
 app.use('/api/questions', questions);
+app.use('/api/users', users);
 
 
 // Define the port
