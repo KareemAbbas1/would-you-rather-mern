@@ -1,53 +1,58 @@
-import * as types from './actionsTypes';
-import { saveQuestion } from '../../utils/api';
-import { addQuestionToUser } from './usersAction';
+import * as types from './actionsType';
+// import { saveQuestion } from '../../utils/api';
+// import { addQuestionToUser } from './usersActions';
 import axios from 'axios';
 
+
 export const getQuestions = questions => dispatch => {
+    // dispatch(setQuestionsLoading());
     axios
-    .get('/api/questions')
-    .then(res => dispatch ({
-        type: types.GET_QUESTIONS,
-        questions: res.data
-    }));
+        .get('/api/questions')
+        .then(res =>
+            dispatch({
+                type: types.GET_QUESTIONS,
+                questions: res.data
+            })
+        );
 };
 
-
-
-export function addQuestion(question) {
-    return {
-        type: types.ADD_QUESTION,
-        question
-    }
+export const addQuestion = question => dispatch => {
+    axios
+        .post('/api/questions')
+        .then(res =>
+            dispatch({
+                type: types.ADD_QUESTION,
+                question: res.data
+            })
+        );
 };
 
-export function addAnswer({ qid, authedUser, answer }) {
+export const addAnswer = ({ qid, authReducer, answer }) => {
     return {
         type: types.ADD_ANSWER,
         info: {
             qid,
-            authedUser,
+            authReducer,
             answer
         }
     }
 };
 
-// export const questionsLoading = () => {
-//     return{
-//         type: types.LOADING_STATE
-//     }
-// }
+export const setQuestionsLoading = () => {
+    return {
+        type: types.QUESTIONS_LOADING
+    }
+}
 
-
-export function handleAddQuestion(optionOne, optionTwo) {
+export const handleAddQuestion = (optionOne, optionTwo) => {
     return async (dispatch, getState) => {
-        const { authedUser } = getState();
+        // const { authReducer } = getState();
 
-        return saveQuestion({ optionOneText: optionOne, optionTwoText: optionTwo, author: authedUser })
-            .then(question => {
-                dispatch(addQuestion(question));
-                dispatch(addQuestionToUser(question));
-            })
+        // return saveQuestion({ optionOneText: optionOne, optionTwoText: optionTwo, author: authReducer })
+        //     .then(question => {
+        //         dispatch(addQuestion(question));
+        //         dispatch(addQuestionToUser(question));
+        //     })
     };
 };
 

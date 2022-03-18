@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 
 // User Schema
-const UserSchema = new Schema ({
+const UserSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -26,7 +26,10 @@ const UserSchema = new Schema ({
         type: Map,
         of: String,
     },
-    questions: [String]
+    questions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Question'
+    }] /*or [String] */
 });
 
 

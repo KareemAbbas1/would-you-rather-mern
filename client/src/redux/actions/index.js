@@ -1,15 +1,14 @@
-import { getInitialData } from '../../utils/api';
+// import { getInitialData } from '../../utils/api';
+// import { getUsers } from './usersActions';
 import { getQuestions } from './questionActions';
-import { getUsers } from './usersAction';
 
 
-
-
-export function handleInitialData() {
+export function handleInitialData(questions) {
     return async dispatch => {
-        return getInitialData().then(({ users, questions }) => {
-            dispatch(getUsers(users));
-            dispatch(getQuestions(questions));
-        });
-    };
-};
+        dispatch(getQuestions(questions))
+        // return getInitialData().then(({ users, questions }) => {
+        //     // dispatch(getUsers(users));
+        //     dispatch(getQuestions(questions));
+        // })
+    }
+}

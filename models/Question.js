@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
 
+
+const Schema = mongoose.Schema;
 
 // Option Schema (Text/NestedObject) 
 const OptionSchema = new Schema({
@@ -10,7 +11,7 @@ const OptionSchema = new Schema({
         type: String,
         required: true
     }
-});  
+});
 
 
 // Question Schema(Final Schema)
@@ -19,13 +20,16 @@ const QuestionSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    author: String,
-    optionOne: {
-        type: OptionSchema,
-        required: true
+    // author: {
+    //     type: String,
+    //     required: true
+    // },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
-    optionTwo: {
-        type: OptionSchema,
+    options: {
+        type: [OptionSchema],
         required: true
     }
 });

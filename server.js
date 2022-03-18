@@ -1,40 +1,46 @@
+/*Start Imports*/
+
 import express from "express";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import { mongoURI } from "./config/keys.js";
+
+import dotenv from 'dotenv';
+// Set up dotenv to be able to access the local enviornment variables 
+dotenv.config();
 
 // Import routes
-import questions from './routes/api/questions.js';
-import users from './routes/api/users.js';
+import questions from './routes/forms/api/questions.js';
+import users from './routes/forms/api/users.js';
+import auth from './routes/forms/api/auth.js';
+
+/*End Imports*/
+
+
 
 
 // Initialize the server
 const app = express();
+// Define the port
+const port = process.env.PORT || 5000;
 
 
-// BodyParser Middleware
-app.use(bodyParser.json());
+// Body parser middleware(Allow the server to accept JSON for data transfer over the web through HTTP requests)
+app.use(express.json());
 
 
-// DB config
-const db = mongoURI;
-
-
-// Connect to mongo
+// Database configuration
+const db = process.env.MONGO_URI;
+// Connect to mongoDB
 mongoose
-    .connect(db)
-    .then(() => console.log('Database is connected'))
-    .catch(error => console.log(error));
+.connect(db)
+.then(() => console.log('Database is connected'))
+.catch(error => console.log(error));
 
 
 
 // Use routes
 app.use('/api/questions', questions);
 app.use('/api/users', users);
-
-
-// Define the port
-const port = process.env.PORT || 5000;
+app.use('/api/auth', auth);
 
 
 // Start the server
